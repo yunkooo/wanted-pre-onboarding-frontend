@@ -17,5 +17,6 @@ module.exports = {
     'no-console': 2,
     'no-unused-vars': 'warn',
     'object-curly-newline': 1,
+    'no-shadow': 0,
   },
 };
