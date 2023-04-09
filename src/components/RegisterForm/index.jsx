@@ -1,11 +1,15 @@
-import React from 'react';
-import { Stack } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Stack, useToast } from '@chakra-ui/react';
 import CommonButton from '../common/CommonButton';
 import CommonInput from '../common/CommonInput';
 import useInput from '../../lib/hook/useInput';
-import { validation } from '../../lib/utils/validation';
+import { validation, validationError } from '../../lib/utils/validation';
+import { registerApi } from '../../api/auth';
 
 const RegisterForm = () => {
+  const toastMessage = useToast();
+  const navigate = useNavigate();
   const [{ email, password, rePassword }, onChage] = useInput({ email: '', password: '', rePassword: '' });
 
   const isDisabled =
@@ -14,10 +18,37 @@ const RegisterForm = () => {
     !!rePassword &&
     validation.isEmailCheck(email).value &&
     validation.isPasswordCheck(password).value &&
-    validation.isPasswordReCheck(password, rePassword).value;
+    validation.isPasswordCheck(rePassword).value;
+
+  const submitHandler = async e => {
+    e.preventDefault();
+    if (password !== rePassword) {
+      toastMessage({
+        title: `${validationError.PASSWORD_CHECK_ERROR}`,
+        status: 'error',
+        duration: 3000,
+        isClosable: false,
+      });
+      return;
+    }
+
+    const res = await registerApi(email, password);
+
+    if (res?.status === 400) {
+      toastMessage({
+        title: `${res?.data.message}`,
+        status: 'error',
+        duration: 3000,
+        isClosable: false,
+      });
+    }
+    if (res?.status === 201) {
+      return navigate('/signin');
+    }
+  };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <Stack spacing={3}>
         <CommonInput
           id='email'
@@ -46,10 +77,11 @@ const RegisterForm = () => {
           placeholder='비밀번호 확인 입력'
           label='Password check'
           onChange={onChage}
-          errorMSG={validation.isPasswordReCheck(password, rePassword).message}
+          errorMSG={validation.isPasswordCheck(rePassword).message}
         />
 
         <CommonButton
+          type='submit'
           children={'회원가입'}
           bg={'blue.400'}
           color={'white'}
