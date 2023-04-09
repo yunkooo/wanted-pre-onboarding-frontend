@@ -14,9 +14,10 @@ module.exports = {
 
   rules: {
     'import/prefer-default-export': 0,
-    'no-console': 2,
+    'no-console': 1,
     'no-unused-vars': 'warn',
     'object-curly-newline': 1,
     'no-shadow': 0,
+    'consistent-return': 0,
   },
 };

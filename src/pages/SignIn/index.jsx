@@ -9,8 +9,8 @@ const SignIn = () => {
       </Heading>
       <Stack spacing={6}>
         <LoginForm />
-        <Link color={'gray'} _hover={{ color: 'black' }}>
-          Sign in
+        <Link color={'gray'} _hover={{ color: 'black' }} href='/signup'>
+          Sign Up
         </Link>
       </Stack>
     </Box>
