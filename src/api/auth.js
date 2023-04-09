@@ -12,3 +12,15 @@ export const registerApi = async (email, password) => {
     }
   }
 };
+
+export const loginApi = async (email, password) => {
+  try {
+    const res = await axiosInstance.post('/auth/signin', { email, password });
+
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return error.response;
+    }
+  }
+};
