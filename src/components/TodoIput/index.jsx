@@ -11,7 +11,7 @@ export default function TodoInput() {
     <form onSubmit={submitHandler}>
       <Stack flexDirection={'row'} align={'flex-end'}>
         <Input id='todoInput' name='todo' />
-        <Button type='submit' children={<AddIcon boxSize={6} />} />
+        <Button type='submit' children={<AddIcon boxSize={5} />} />
       </Stack>
     </form>
   );
