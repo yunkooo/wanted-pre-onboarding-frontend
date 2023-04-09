@@ -7,6 +7,7 @@ export default function CommonInput({
   onChange,
   placeholder,
   value,
+  name,
   label,
   testid,
   errorMSG = '',
@@ -15,7 +16,7 @@ export default function CommonInput({
   return (
     <FormControl id={id} isInvalid={errorMSG}>
       <FormLabel>{label}</FormLabel>
-      <Input type={type} onChange={onChange} placeholder={placeholder} value={value} data-testid={testid} />
+      <Input type={type} name={name} onChange={onChange} placeholder={placeholder} value={value} data-testid={testid} />
       {!errorMSG ? <FormHelperText>{helpMSG}</FormHelperText> : <FormErrorMessage>{errorMSG}</FormErrorMessage>}
     </FormControl>
   );
