@@ -15,4 +15,8 @@ const useTodo = initialState => {
   const addTodo = newTodo => {
     dispatch({ type: 'ADD', newTodo });
   };
+
+  return [{ addTodo }, todos];
 };
+
+export default useTodo;
