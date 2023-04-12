@@ -1,11 +1,16 @@
 import React, { useRef } from 'react';
 import { Button, Input, Stack, useToast } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
-import { createApi } from '../../api/todo';
+import { createApi } from '../../../api/todo';
+import { useTodoContext } from '../../../context/todoContext';
+import useGetTodo from '../../../lib/hook/useGetTodo';
 
 export default function TodoInput() {
   const todoInput = useRef();
   const toastMessage = useToast();
+  const [getTodos] = useGetTodo();
+
+  const { addTodo } = useTodoContext();
 
   const submitHandler = async e => {
     e.preventDefault();
@@ -20,7 +25,10 @@ export default function TodoInput() {
       });
       return;
     }
-    await createApi(newTodo);
+    const res = await createApi(newTodo);
+
+    if (res.status === 201) addTodo(newTodo);
+    getTodos();
   };
 
   return (

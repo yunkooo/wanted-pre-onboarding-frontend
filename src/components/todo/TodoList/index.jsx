@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { UnorderedList } from '@chakra-ui/react';
 import TodoItem from '../TodoItem';
-import useGetTodo from '../../lib/hook/useGetTodo';
+import useGetTodo from '../../../lib/hook/useGetTodo';
 
 export default function TodoList() {
   const [getTodos, isLoading, todos] = useGetTodo();
