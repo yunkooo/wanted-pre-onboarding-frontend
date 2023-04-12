@@ -2,6 +2,9 @@ import { useReducer } from 'react';
 
 const todoReducer = (state, action) => {
   switch (action.type) {
+    case 'SET':
+      return [...action.todoList];
+
     case 'ADD':
       return [...state, action.newTodo];
 
@@ -9,14 +12,18 @@ const todoReducer = (state, action) => {
   }
 };
 
-const useTodo = initialState => {
-  const [todos, dispatch] = useReducer(todoReducer, initialState);
+const useTodo = () => {
+  const [todos, dispatch] = useReducer(todoReducer, []);
+
+  const setTodo = todoList => {
+    dispatch({ type: 'SET', todoList });
+  };
 
   const addTodo = newTodo => {
     dispatch({ type: 'ADD', newTodo });
   };
 
-  return [{ addTodo }, todos];
+  return [{ addTodo, setTodo }, todos];
 };
 
 export default useTodo;
