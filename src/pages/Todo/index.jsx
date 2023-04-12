@@ -1,7 +1,7 @@
 import { Box, Heading, Stack, Icon, Button } from '@chakra-ui/react';
 import { GrLogout } from 'react-icons/gr';
-import TodoInput from '../../components/TodoInput';
-import TodoList from '../../components/TodoList';
+import TodoInput from '../../components/todo/TodoInput';
+import TodoList from '../../components/todo/TodoList';
 import { TodoProvider } from '../../context/todoContext';
 
 const Todo = () => {

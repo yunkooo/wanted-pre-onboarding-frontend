@@ -24,3 +24,15 @@ export const getApi = async () => {
     }
   }
 };
+
+export const deleteApi = async id => {
+  try {
+    const res = await axiosAuthInstance.delete(`/todos/${id}`);
+
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return error.response;
+    }
+  }
+};
