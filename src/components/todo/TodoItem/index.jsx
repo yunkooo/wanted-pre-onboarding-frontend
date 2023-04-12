@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Stack, ListItem, Input, Button, Text, Checkbox } from '@chakra-ui/react';
-import { EditIcon, CheckIcon, CloseIcon, DeleteIcon } from '@chakra-ui/icons';
+import { EditIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import DeleteBtn from '../buttons/DeleteBtn';
 
 export default function TodoItem({ todoData }) {
   const [isModify, setIsModify] = useState(false);
@@ -45,9 +46,7 @@ export default function TodoItem({ todoData }) {
             <Button mt={0} bg={'inherit'} w={'min-content'} onClick={() => setIsModify(!isModify)}>
               <EditIcon />
             </Button>
-            <Button mt={0} bg={'inherit'} w={'min-content'}>
-              <DeleteIcon />
-            </Button>
+            <DeleteBtn todoId={todoData.id} />
           </Stack>
         </ListItem>
       )}
