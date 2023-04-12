@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Stack, ListItem, Input, Button, Text, Checkbox } from '@chakra-ui/react';
 import { EditIcon, CheckIcon, CloseIcon, DeleteIcon } from '@chakra-ui/icons';
 
-export default function TodoItem() {
+export default function TodoItem({ todoData }) {
   const [isModify, setIsModify] = useState(false);
   const [isCheck, setIsCheck] = useState(false);
 
@@ -30,7 +30,7 @@ export default function TodoItem() {
         <ListItem listStyleType={'none'}>
           <Stack flexDirection={'row'} align={'center'} justify='space-between'>
             <Checkbox
-              isChecked={isCheck}
+              isChecked={todoData.isCompleted}
               onChange={() => {
                 setIsCheck(!isCheck);
               }}
@@ -39,7 +39,7 @@ export default function TodoItem() {
               w={'200px'}
             >
               <Text as='b' mt={'0.5rem'} textAlign={'left'}>
-                밥먹기
+                {todoData.todo}
               </Text>
             </Checkbox>
             <Button mt={0} bg={'inherit'} w={'min-content'} onClick={() => setIsModify(!isModify)}>
