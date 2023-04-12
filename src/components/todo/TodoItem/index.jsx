@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Stack, ListItem, Input, Button, Text, Checkbox } from '@chakra-ui/react';
+import { Stack, ListItem, Input, Button, Text, Checkbox, useToast } from '@chakra-ui/react';
 import { EditIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import DeleteBtn from '../buttons/DeleteBtn';
 import { updateApi } from '../../../api/todo';
 import { useTodoContext } from '../../../context/todoContext';
 
 export default function TodoItem({ todoData }) {
+  const toastMessage = useToast();
+
   const { id, isCompleted, todo } = todoData;
   const { updateTodo } = useTodoContext();
 
@@ -21,13 +23,45 @@ export default function TodoItem({ todoData }) {
     }
   };
 
+  const updateHandler = async e => {
+    e.preventDefault();
+    if (!window.confirm('수정 하시겠습니까?')) return;
+
+    const {
+      todoUpdateInput: { value },
+    } = e.currentTarget;
+
+    if (value === '') {
+      toastMessage({
+        title: `할일을 입력해주세요.`,
+        status: 'error',
+        duration: 3000,
+        isClosable: false,
+      });
+      return;
+    }
+    const res = await updateApi({ ...todoData, todo: value });
+
+    if (res.status === 200) {
+      updateTodo(res.data);
+      setIsModify(false);
+    } else if (value === '') {
+      toastMessage({
+        title: `${res.data.message}`,
+        status: 'error',
+        duration: 3000,
+        isClosable: false,
+      });
+    }
+  };
+
   return (
     <>
       {isModify ? (
-        <form>
+        <form onSubmit={updateHandler}>
           <Stack flexDirection={'row'} align={'center'} justify='space-between'>
-            <Input w={'200px'} h={8} />
-            <Button bg={'inherit'} w={2}>
+            <Input w={'200px'} name={'todoUpdateInput'} defaultValue={`${todo}`} h={8} />
+            <Button type='submit' bg={'inherit'} w={2}>
               <CheckIcon />
             </Button>
             <Button
