@@ -36,3 +36,16 @@ export const deleteApi = async id => {
     }
   }
 };
+
+export const updateApi = async ({ id, todo, isCompleted }) => {
+  console.log(isCompleted);
+  try {
+    const res = await axiosAuthInstance.put(`/todos/${id}`, { todo, isCompleted });
+
+    return res;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      return error.response;
+    }
+  }
+};
