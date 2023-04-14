@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Stack, ListItem, Input, Button, Text, Checkbox, useToast } from '@chakra-ui/react';
-import { EditIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import { Stack, ListItem, Input, Text, Checkbox, useToast } from '@chakra-ui/react';
 import DeleteBtn from '../buttons/DeleteBtn';
 import { updateApi } from '../../../api/todo';
 import { useTodoContext } from '../../../context/todoContext';
+import ModifyBtn from '../buttons/ModifyBtn';
+import CancelBtn from '../buttons/CancelBtn';
+import UpdateBtn from '../buttons/UpdateBtn';
 
 export default function TodoItem({ todoData }) {
   const toastMessage = useToast();
@@ -55,24 +57,18 @@ export default function TodoItem({ todoData }) {
     }
   };
 
+  const modifyHandler = () => {
+    setIsModify(!isModify);
+  };
+
   return (
     <>
       {isModify ? (
         <form onSubmit={updateHandler}>
           <Stack flexDirection={'row'} align={'center'} justify='space-between'>
-            <Input w={'200px'} name={'todoUpdateInput'} defaultValue={`${todo}`} h={8} />
-            <Button type='submit' bg={'inherit'} w={2}>
-              <CheckIcon />
-            </Button>
-            <Button
-              bg={'inherit'}
-              w={2}
-              onClick={() => {
-                setIsModify(!isModify);
-              }}
-            >
-              <CloseIcon />
-            </Button>
+            <Input w={'200px'} name={'todoUpdateInput'} data-testid='modify-input' defaultValue={`${todo}`} h={8} />
+            <UpdateBtn />
+            <CancelBtn func={modifyHandler} />
           </Stack>
         </form>
       ) : (
@@ -91,9 +87,7 @@ export default function TodoItem({ todoData }) {
                 {todo}
               </Text>
             </Checkbox>
-            <Button mt={0} bg={'inherit'} w={'min-content'} onClick={() => setIsModify(!isModify)}>
-              <EditIcon />
-            </Button>
+            <ModifyBtn func={modifyHandler} />
             <DeleteBtn todoId={id} />
           </Stack>
         </ListItem>

@@ -18,7 +18,7 @@ export default function DeleteBtn({ todoId }) {
   };
 
   return (
-    <Button onClick={() => deleteHandler(todoId)} mt={0} bg={'inherit'} w={'min-content'}>
+    <Button onClick={() => deleteHandler(todoId)} data-testid='delete-button' mt={0} bg={'inherit'} w={'min-content'}>
       <DeleteIcon />
     </Button>
   );
