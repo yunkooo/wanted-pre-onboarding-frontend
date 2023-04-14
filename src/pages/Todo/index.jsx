@@ -1,8 +1,8 @@
-import { Box, Heading, Stack, Icon, Button } from '@chakra-ui/react';
-import { GrLogout } from 'react-icons/gr';
+import { Box, Heading, Stack } from '@chakra-ui/react';
 import TodoInput from '../../components/todo/TodoInput';
 import TodoList from '../../components/todo/TodoList';
 import { TodoProvider } from '../../context/todoContext';
+import LogoutBtn from '../../components/todo/buttons/LogoutBtn';
 
 const Todo = () => {
   return (
@@ -12,9 +12,7 @@ const Todo = () => {
       </Heading>
 
       <Stack mb={1} align={'flex-end'}>
-        <Button bg={'inherit'} position={'absolute'} top={'40px'} boxSize={'6'}>
-          <Icon as={GrLogout} />
-        </Button>
+        <LogoutBtn />
       </Stack>
       <TodoProvider>
         <TodoInput />
