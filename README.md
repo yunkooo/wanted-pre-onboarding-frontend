@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# 🗒 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**🔗 배포 링크 : https://yunkoo-wanted-todo.netlify.app/signin**  
+**👼 테스트 계정 : ilovetest.gmail**  
+**🔑 비밀번호 : 123123123**
 
-## Available Scripts
+## 소개
 
-In the project directory, you can run:
+```
+로그인, 회원가입이 가능 한 Todo-List, 유저 마다 개인의 할 일을 저장 할 수 있습니다.
+Todo-List는 할 일 입력, 수정, 삭제, 완료 기능을 제공합니다.
+```
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# 🎬 프로젝트 시연
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+|                                                         1. 회원가입                                                         |                                                          2. 로그인                                                          |                                                         3. 로그아웃                                                         |
+| :-------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://cdn.discordapp.com/attachments/1077822566032490499/1096421028172927016/bdfe8578b2898cb0.gif" width=245 /> | <img src="https://cdn.discordapp.com/attachments/1077822566032490499/1096421026683944990/c8958a960e086dbf.gif" width=245 /> | <img src="https://cdn.discordapp.com/attachments/1077822566032490499/1096421026327433356/79bea0c1cfcfa945.gif" width=245 /> |
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+|                                                        3. 할 일 생성                                                        |                                                        4. 할 일 수정                                                        |                                                        4. 할 일 삭제                                                        |
+| :-------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://cdn.discordapp.com/attachments/1077822566032490499/1096421027891920995/77bce6ad88587295.gif" width=245 /> | <img src="https://cdn.discordapp.com/attachments/1077822566032490499/1096421027522810016/1ead749e8edc57b8.gif" width=245 /> | <img src="https://cdn.discordapp.com/attachments/1077822566032490499/1096421027132751872/5090b4688ece16c0.gif" width=245 /> |
 
-### `npm run build`
+# ⚙️ 기술스택
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- react
+- javascript
+- chakra-ui
+- axios
+- react-router-dom
+- eslint
+- prettier
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 🗝 프로젝트 실행
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. GitHub repository 다운로드
 
-### `npm run eject`
+```
+$ git clone https://github.com/yunkooo/wanted-pre-onboarding-frontend.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. 의존성 패키지 설치
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+$ npm i
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. 프로젝트 실행
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+$ npm start
+```
 
-## Learn More
+# 🗂 폴더구조
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+📦src
+ ┣ 📂api
+ ┃
+ ┣ 📂components
+ ┃ ┣ 📂Common
+ ┃ ┃ ┣ 📂CommonButton
+ ┃ ┃ ┗ 📂CommonInput
+ ┃ ┣ 📂HOC
+ ┃ ┃ ┗ 📂Auth
+ ┃ ┣ 📂Layout
+ ┃ ┣ 📂LoginForm
+ ┃ ┣ 📂RegisterForm
+ ┃ ┗ 📂todo
+ ┃   ┣ 📂buttons
+ ┃   ┃ ┣ 📂CancelBtn
+ ┃   ┃ ┣ 📂DeleteBtn
+ ┃   ┃ ┣ 📂LogoutBtn
+ ┃   ┃ ┣ 📂ModifyBtn
+ ┃   ┃ ┗ 📂UpdateBtn
+ ┃   ┣ 📂TodoInput
+ ┃   ┣ 📂TodoItem
+ ┃   ┗ 📂TodoList
+ ┣ 📂constant
+ ┣ 📂context
+ ┣ 📂lib
+ ┃ ┣ 📂hooks
+ ┃ ┣ 📂styles
+ ┃ ┗ 📂utils
+ ┣ 📂pages
+ ┃ ┣ 📂SignIn
+ ┃ ┣ 📂SignUp
+ ┃ ┗ 📂Todo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
