@@ -19,5 +19,7 @@ module.exports = {
     'object-curly-newline': 0,
     'no-shadow': 0,
     'consistent-return': 0,
+    'no-alert': 0,
+    'react-hooks/exhaustive-deps': 0,
   },
 };

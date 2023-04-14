@@ -73,6 +73,7 @@ export default function LoginForm() {
           color={'white'}
           _hover={{ bg: 'blue.500' }}
           isDisabled={!isDisabled}
+          testId={'signin-button'}
         />
       </Stack>
     </form>

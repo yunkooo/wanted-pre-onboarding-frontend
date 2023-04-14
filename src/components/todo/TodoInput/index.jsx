@@ -25,14 +25,17 @@ export default function TodoInput() {
     }
     const res = await createApi(newTodo);
 
-    if (res.status === 201) addTodo(res.data);
+    if (res.status === 201) {
+      addTodo(res.data);
+      todoInput.current.value = '';
+    }
   };
 
   return (
     <form onSubmit={submitHandler}>
       <Stack flexDirection={'row'} align={'flex-end'}>
-        <Input id='todoInput' ref={todoInput} name='todo' />
-        <Button type='submit' children={<AddIcon boxSize={5} />} />
+        <Input id='todoInput' data-testid='new-todo-input' ref={todoInput} name='todo' />
+        <Button type='submit' data-testid='new-todo-add-button' children={<AddIcon boxSize={5} />} />
       </Stack>
     </form>
   );

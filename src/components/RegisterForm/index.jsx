@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Stack, useToast } from '@chakra-ui/react';
 import CommonButton from '../common/CommonButton';
@@ -87,6 +87,7 @@ const RegisterForm = () => {
           color={'white'}
           _hover={{ bg: 'blue.500' }}
           isDisabled={!isDisabled}
+          testId={'signup-button'}
         />
       </Stack>
     </form>
